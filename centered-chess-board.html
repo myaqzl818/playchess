@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HappyChess - Play Free Online Chess Game | Chess Strategy & Fun</title>
+    <meta name="description" content="Play HappyChess online for free! Enjoy the classic chess game with beautiful interface, strategic gameplay, and hours of entertainment. Perfect for beginners and masters alike.">
+    <meta name="keywords" content="happychess, chess game, online chess, free chess, chess strategy, play chess, chess board">
+    <meta name="author" content="HappyChess">
+    <link rel="canonical" href="https://97747534.xyz/">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="HappyChess - Play Free Online Chess Game">
+    <meta property="og:description" content="Play HappyChess online for free! Enjoy the classic chess game with beautiful interface and strategic gameplay.">
+    <meta property="og:url" content="https://97747534.xyz/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="HappyChess">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="HappyChess - Play Free Online Chess Game">
+    <meta name="twitter:description" content="Play HappyChess online for free! Enjoy the classic chess game with beautiful interface and strategic gameplay.">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Game",
+        "name": "HappyChess",
+        "description": "Play HappyChess online for free! Enjoy the classic chess game with beautiful interface and strategic gameplay.",
+        "url": "https://97747534.xyz/",
+        "genre": "Strategy Game",
+        "gamePlatform": "Web Browser",
+        "applicationCategory": "Game"
+    }
+    </script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #1d1d1f;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 1px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: #007aff;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo::before {
+            content: "♔";
+            font-size: 32px;
+            color: #ff3b30;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        
+        .nav-links a {
+            color: #1d1d1f;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: #007aff;
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 60px 0;
+            text-align: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="chess" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse"><rect width="10" height="10" fill="rgba(255,255,255,0.1)"/><rect x="10" y="10" width="10" height="10" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23chess)"/></svg>') repeat;
+            opacity: 0.3;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #ffffff, #f0f0f0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        
+        .subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: #ff3b30;
+            color: white;
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(255, 59, 48, 0.3);
+        }
+        
+        .cta-button:hover {
+            background: #e6342a;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(255, 59, 48, 0.4);
+        }
+        
+        /* Game Section - Modified for Centered Layout */
+        .game-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e9e5ff 100%);
+        }
+        
+        .game-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 40px;
+        }
+        
+        .game-wrapper {
+            width: 100%;
+            max-width: 700px;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .game-frame {
+            width: 100%;
+            height: 550px;
+            border: 10px solid #f5f7fa;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            background: #f5f7fa;
+            overflow: hidden;
+        }
+        
+        .game-info {
+            max-width: 800px;
+            padding: 40px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        
+        h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #1d1d1f;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        h2::after {
+            content: "";
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 3px;
+            background: #007aff;
+            border-radius: 2px;
+        }
+        
+        .feature-list {
+            list-style: none;
+            margin: 30px auto;
+            max-width: 500px;
+            text-align: left;
+        }
+        
+        .feature-list li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            color: #495057;
+        }
+        
+        .feature-list li::before {
+            content: "✓";
+            color: #34c759;
+            font-weight: bold;
+            margin-right: 12px;
+            font-size: 1.2rem;
+        }
+        
+        /* About Section */
+        .about-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+        
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #495057;
+        }
+        
+        .about-text p {
+            margin-bottom: 20px;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 30px 20px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .stat-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #007aff;
+            display: block;
+        }
+        
+        .stat-label {
+            color: #6c757d;
+            font-weight: 500;
+            margin-top: 10px;
+        }
+        
+        /* Features Section */
+        .features-section {
+            padding: 80px 0;
+            background: white;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+        
+        .feature-card {
+            padding: 40px 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 20px;
+            text-align: center;
+            transition: transform 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .feature-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
+            transform: translateX(-100%);
+            transition: transform 0.6s ease;
+        }
+        
+        .feature-card:hover::before {
+            transform: translateX(100%);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+        
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        
+        /* Footer */
+        footer {
+            background: #1d1d1f;
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-section h3 {
+            color: #007aff;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+        
+        .footer-section p,
+        .footer-section a {
+            color: #a1a1a6;
+            text-decoration: none;
+            line-height: 1.8;
+        }
+        
+        .footer-section a:hover {
+            color: white;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #333;
+            color: #6c757d;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .game-wrapper {
+                max-width: 100%;
+            }
+            
+            .game-frame {
+                height: 400px;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .container {
+                padding: 0 15px;
+            }
+            
+            .hero {
+                padding: 40px 0;
+            }
+            
+            .game-section,
+            .about-section,
+            .features-section {
+                padding: 60px 0;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .game-frame {
+                height: 350px;
+            }
+            
+            .game-info {
+                padding: 30px 20px;
+            }
+            
+            .feature-card {
+                padding: 30px 20px;
+            }
+            
+            .stat-number {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="/" class="logo">Play Chess</a>
+                <nav>
+                    <ul class="nav-links">
+                        <li><a href="#game">Play Now</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Play Chess</h1>
+                <p class="subtitle">Experience the joy of chess with our beautifully designed online chess game that brings strategy and fun together.</p>
+                <a href="#game" class="cta-button">Start Playing Now</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="game" class="game-section">
+        <div class="container">
+            <div class="game-container">
+                <div class="game-wrapper">
+                    <iframe 
+                        src="https://playpager.com/embed/chess/index.html" 
+                        class="game-frame"
+                        title="HappyChess - Online Chess Game"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+                <div class="game-info">
+                    <h2>Play Chess Online</h2>
+                    <p>Dive into the world of strategic thinking with HappyChess. This classic board game has been entertaining minds for centuries, and now you can enjoy it right in your browser.</p>
+                    
+                    <ul class="feature-list">
+                        <li>Intuitive drag-and-drop interface</li>
+                        <li>Suitable for all skill levels</li>
+                        <li>No registration required</li>
+                        <li>Play against computer AI</li>
+                        <li>Beautiful, responsive design</li>
+                        <li>Free to play anytime</li>
+                    </ul>
+                    
+                    <p><strong>Ready to test your strategic mind?</strong> Click and drag pieces to make your moves. Plan your strategy, protect your king, and aim for checkmate!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about-section">
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: 50px;">About HappyChess</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>HappyChess brings the timeless game of chess to your fingertips with a modern, user-friendly interface. Whether you're a beginner learning the ropes or a seasoned player honing your skills, our platform provides the perfect environment for chess enthusiasts.</p>
+                    
+                    <p>Chess is more than just a game – it's a mental workout that improves concentration, problem-solving skills, and strategic thinking. Our implementation ensures that you can focus on what matters most: enjoying the game and improving your chess abilities.</p>
+                    
+                    <p>Built with modern web technologies, HappyChess works seamlessly across all devices, from desktop computers to mobile phones, ensuring you can play whenever inspiration strikes.</p>
+                </div>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <span class="stat-number">1500+</span>
+                        <span class="stat-label">Years of Chess History</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">64</span>
+                        <span class="stat-label">Squares on Board</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">32</span>
+                        <span class="stat-label">Game Pieces</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">∞</span>
+                        <span class="stat-label">Possible Games</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="features" class="features-section">
+        <div class="container">
+            <h2 style="text-align: center;">Why Choose HappyChess?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <span class="feature-icon">🎯</span>
+                    <h3>Strategic Gameplay</h3>
+                    <p>Develop your tactical thinking and long-term planning skills with every game you play.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">📱</span>
+                    <h3>Cross-Platform</h3>
+                    <p>Play seamlessly on desktop, tablet, or mobile devices with our responsive design.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">🧠</span>
+                    <h3>Mental Exercise</h3>
+                    <p>Enhance your cognitive abilities, memory, and concentration through regular chess practice.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">🎨</span>
+                    <h3>Beautiful Interface</h3>
+                    <p>Enjoy a clean, modern design that makes playing chess a visually pleasing experience.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">⚡</span>
+                    <h3>Instant Play</h3>
+                    <p>No downloads, no installations – start playing immediately in your web browser.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">🏆</span>
+                    <h3>Skill Building</h3>
+                    <p>Perfect for players of all levels, from complete beginners to experienced masters.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>HappyChess</h3>
+                    <p>Bringing the joy of chess to players worldwide. Experience strategic gaming at its finest with our modern, accessible chess platform.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <p><a href="#game">Play Now</a></p>
+                    <p><a href="#about">About Us</a></p>
+                    <p><a href="#features">Features</a></p>
+                    <p><a href="/rules">Chess Rules</a></p>
+                </div>
+                <div class="footer-section">
+                    <h3>Support</h3>
+                    <p><a href="/help">Help Center</a></p>
+                    <p><a href="/faq">FAQ</a></p>
+                    <p><a href="/contact">Contact Us</a></p>
+                    <p><a href="/feedback">Feedback</a></p>
+                </div>
+                <div class="footer-section">
+                    <h3>Legal</h3>
+                    <p><a href="/privacy">Privacy Policy</a></p>
+                    <p><a href="/terms">Terms of Service</a></p>
+                    <p><a href="/cookies">Cookie Policy</a></p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 97747534.xyz. All rights reserved. | Designed for chess enthusiasts worldwide.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
